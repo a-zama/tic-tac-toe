@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+
+}
+
+
+td {
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+  border: solid 2px #000;
+  
+  
+}
+
+.round {
+  font-size: 70px;
+  color: #ff0000;
+  text-align: center;
+  line-height: 100px;
+
+}
+
+.cross {
+  font-size: 70px;
+  color: #0000ff;
+  text-align: center;
+  line-height: 100px;
+
+}
