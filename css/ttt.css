@@ -1,5 +1,22 @@
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#message-a {
+  font-size: 30px;
+  
+}
+
+#message-b {
+  font-size: 24px;
+
+}
+
+
 table {
   border-collapse: collapse;
+  margin: 0 auto;
 
 }
 
@@ -11,6 +28,10 @@ td {
   border: solid 2px #000;
   
   
+}
+
+.td-win {
+  background: #ffff99;
 }
 
 .td-notclickable {
