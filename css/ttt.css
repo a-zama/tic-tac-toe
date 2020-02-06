@@ -1,3 +1,7 @@
+body {
+  background: #eeffff;
+}
+
 div {
   text-align: center;
   margin-top: 20px;
@@ -24,15 +28,15 @@ table {
 td {
   width: 100px;
   height: 100px;
-  background: #ddd;
+  background: #eee;
   border: solid 2px #000;
   
   
 }
 
-.td-win {
+/* .td-win {
   background: #ffff99;
-}
+} */
 
 .td-notclickable {
   pointer-events: none;
