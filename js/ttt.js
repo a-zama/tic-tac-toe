@@ -2,6 +2,7 @@
 
 // flagがfalseのときバツのターン、trueのときマルのターン
 let flag =true;
+// ターン数カウンター
 let counter = 9;
 
 // box を取得
@@ -11,6 +12,9 @@ const boxesArray = [].slice.call(boxes);
 
 // message-b を取得
 const message = document.getElementById('message-b');
+
+// リセットボタン取得
+const resetBtn = document.getElementById('reset-btn');
 
 // タテ・ヨコ・ナナメの列を配列化
 function filterById(targetArray, idArray) {
@@ -43,14 +47,23 @@ function isWinner(symbol) {
         // return box.String.contains('×');
       }
     });
+    // trueを返したlineをwinningLineに代入
+    // if (subResult) { winningLine = line }
+
     return subResult;
   });
   return result;
 }
 
+// ゲーム終了時の処理
+function gameOver() {
+  // 全てのマスをクリックできないようにする
+  boxesArray.forEach(function (box) {
+    box.classList.add('td-notclickable');
+  });
+}
+
 // flagがfalseのときバツのターン、trueのときマルのターン
-
-
 boxes.forEach((box) => {
   box.addEventListener('click', () => {
   if (flag === true){
@@ -61,6 +74,7 @@ boxes.forEach((box) => {
     // マル勝利判定
     if (isWinner('maru')) {
       message.textContent = '〇の勝ち！';
+      gameOver();
       return;
     }
     
@@ -75,6 +89,7 @@ boxes.forEach((box) => {
      // バツ勝利判定
      if (isWinner('batsu')) {
       message.textContent = '×の勝ち！';
+      gameOver();
       return;
     }
 
@@ -87,16 +102,24 @@ boxes.forEach((box) => {
     message.textContent = '引き分け！';
   }
 
-
-
-
-
 })
 })
 
+// ゲーム初期化
+function initGame() {
+  flag = true;
+  counter = 9;
+  // winningLine = null;
+  boxesArray.forEach(function (box) {
+    box.classList.remove('round');
+    box.classList.remove('cross');
+    box.classList.remove('td-notclickable');
+    box.textContent = null;
+  });
+  message.textContent = '〇の番です';
+ 
+}
 
-
-
-
-
-
+resetBtn.addEventListener('click', function () {
+  initGame();
+});

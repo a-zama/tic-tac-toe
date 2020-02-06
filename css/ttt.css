@@ -53,3 +53,26 @@ td {
   line-height: 100px;
 
 }
+
+.btn-container {
+  padding-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  width: 150px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-reset {
+  color: #fff;
+  background-color: #ffc000;
+  font-weight: bold;
+}
+
+.btn-reset:hover {
+  background-color: #ffd347;
+  transition-duration: 0.4s;
+}
