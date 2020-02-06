@@ -1,5 +1,9 @@
 'use strict'
 
+// flagがfalseのときバツのターン、trueのときマルのターン
+let flag =true;
+let counter = 9;
+
 // box を取得
 const boxes = document.querySelectorAll('.box');
 // Array に変換 ※IE11対策…らしい
@@ -31,10 +35,12 @@ function isWinner(symbol) {
   const result = lineArray.some(function (line) {
     const subResult = line.every(function (box) {
       if (symbol === 'maru') {
-        return box.textContent.contains('〇');
+        return box.classList.contains('round');
+        // return box.String.match('〇');
       } else 
       if (symbol === 'batsu') {
-        return box.textContent.contains('×');
+        return box.classList.contains('cross');
+        // return box.String.contains('×');
       }
     });
     return subResult;
@@ -43,13 +49,14 @@ function isWinner(symbol) {
 }
 
 // flagがfalseのときバツのターン、trueのときマルのターン
-let flag =true;
+
 
 boxes.forEach((box) => {
   box.addEventListener('click', () => {
   if (flag === true){
     box.classList.add('round');
     box.textContent = '〇';
+    box.classList.add('td-notclickable');
     
     // マル勝利判定
     if (isWinner('maru')) {
@@ -63,6 +70,7 @@ boxes.forEach((box) => {
   } else {
     box.classList.add('cross');
     box.textContent = '×';
+    box.classList.add('td-notclickable');
 
      // バツ勝利判定
      if (isWinner('batsu')) {
@@ -73,8 +81,13 @@ boxes.forEach((box) => {
     message.textContent = '〇の番です';
     flag = true;
   }
+    counter--;
 
-box.classList.add('td-notclickable');
+  if (counter === 0){
+    message.textContent = '引き分け！';
+  }
+
+
 
 
 
